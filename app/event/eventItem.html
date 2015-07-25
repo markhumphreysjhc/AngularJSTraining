@@ -4,6 +4,7 @@
             <div class="rTableHead">Last Name</div>
             <div class="rTableHead">Username</div>
             <div class="rTableHead">Location</div>
+            <div class="rTableHead">Action</div>
         </div>
 
         <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
@@ -11,5 +12,9 @@
             <div class="rTableCell">{{person.lastName}}</div>
             <div class="rTableCell">{{person.userName}}</div>
             <div class="rTableCell">{{person.whereAbouts}}</div>
+            <div class="rTableCell">
+                <a href="#" class="btn btn-success" ng-click="event.deletePerson()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a> 
+                <a href="#" class="btn btn-success" ng-click="event.modifyPerson()"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modify</a>
+            </div>
         </div>		
     </div>
