@@ -1,0 +1,15 @@
+	<div id="screen" class="rTable">            
+        <div class="rTableRow">
+            <div class="rTableHead">First Name</div>
+            <div class="rTableHead">Last Name</div>
+            <div class="rTableHead">Username</div>
+            <div class="rTableHead">Location</div>
+        </div>
+
+        <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
+			<div class="rTableCell">{{person.firstName}}</div>
+            <div class="rTableCell">{{person.lastName}}</div>
+            <div class="rTableCell">{{person.userName}}</div>
+            <div class="rTableCell">{{person.whereAbouts}}</div>
+        </div>		
+    </div>
