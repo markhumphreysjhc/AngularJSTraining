@@ -32,7 +32,7 @@ angular.module('eventModule', [])
 .run([function () {
 	console.log("Event Module::running");
 }])
-.controller('EventCtrl', ['$scope', 'MainTitle',function ($scope,mainTitle) {
+.controller('EventCtrl', ['$scope', '$modal', 'MainTitle',function ($scope,$modal,mainTitle) {
 	this.title = mainTitle.title;
 	
 	this.menu=[
@@ -89,10 +89,27 @@ angular.module('eventModule', [])
 	},
 	]
 
-	this.addPerson = function() {
+	        // close modal
+        this.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+        // Add new user
+        this.add = function() {
+   //         Users.$add($scope.user)
+            $modalInstance.dismiss('cancel');
+        };
+
+        // Save edited user.
+        this.save = function() {
+     //       $scope.user.$save();
+            $modalInstance.dismiss('cancel');
+        };
+
+	this.addPerson = function(userId) {
     
 		console.log("clicked add");
-
+/*
 		var elem = {
 		firstName : "Christoph",
 		lastName : "Kieselmann",
@@ -101,7 +118,20 @@ angular.module('eventModule', [])
 		}
 
     	this.people.push(elem);
+*/
+
+        var modalInstance = $modal.open({
+            templateUrl: 'add_user_modal',
+            controller: $scope.model,
+            resolve: {
+                id: function() {
+                    return userId;
+                }
+            }
+        });
+
   	}
+
 	
 }])
 .controller('EventItemCtrl', ['$scope','MainTitle',  function ($scope,mainTitle) {

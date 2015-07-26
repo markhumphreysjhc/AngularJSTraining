@@ -1,6 +1,6 @@
 /*Angular Modules take a name, best practice is lowerCamelCase, and a list of dependancies*/
 /*added the second module as a dependancy */
-angular.module('mainApp', ['eventModule','ngRoute','ui.router'])
+angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap'])
 .config(['$urlRouterProvider','$stateProvider',
   function($urlRouterProvider,$stateProvider) {
 
