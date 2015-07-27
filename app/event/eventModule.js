@@ -44,7 +44,7 @@ angular.module('eventModule', [])
 			name:"Contact",
 			href:"contact.html"
 		}
-	]
+	]	
 
 	this.index = 0;
 	this.eventIndex = 0;
@@ -89,22 +89,7 @@ angular.module('eventModule', [])
 	},
 	]
 
-	        // close modal
-        this.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
 
-        // Add new user
-        this.add = function() {
-   //         Users.$add($scope.user)
-            $modalInstance.dismiss('cancel');
-        };
-
-        // Save edited user.
-        this.save = function() {
-     //       $scope.user.$save();
-            $modalInstance.dismiss('cancel');
-        };
 
 	this.addPerson = function(userId) {
     
@@ -130,6 +115,22 @@ angular.module('eventModule', [])
             }
         });
 
+	    // close modal
+        $modalInstance.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+        // Add new user
+        $modalInstance.add = function() {
+   //         Users.$add($scope.user)
+            $modalInstance.dismiss('cancel');
+        };
+
+        // Save edited user.
+        $modalInstance.save = function() {
+     //       $scope.user.$save();
+            $modalInstance.dismiss('cancel');
+        };
   	}
 
 	
