@@ -2,8 +2,8 @@
         <div class="rTableRow">
             <div class="rTableHead">First Name</div>
             <div class="rTableHead">Last Name</div>
-            <div class="rTableHead">Username</div>
-            <div class="rTableHead">Location</div>
+            <div class="rTableHead">User ID</div>
+            <div class="rTableHead">Whereabouts</div>
             <div class="rTableHead">Action</div>
         </div>
 
@@ -27,77 +27,38 @@
         <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
         <form name="userForm" class="form-horizontal">
             <div class="control-group">
-                <label class="control-label" for="name">Name</label>
+                <label class="control-label" for="firstName">First Name</label>
                 <div class="controls">
-                    <input id="name" name="name" ng-model="user.name" type="text" placeholder="Name" class="input-xlarge" required=""  ng-class="{error: user.name.$invalid && !user.name.$pristine}"/>
-                </div>
-            </div>
-            
-            <div class="control-group" ng-class="{error: user.password.$invalid && !user.password.$pristine}">
-                <label class="control-label" for="password">Password</label>
-                <div class="controls">
-                    <input id="password" name="password" ng-model="user.password" type="password" placeholder="Password" class="input-xlarge" required="" />
-                </div>
-            </div>
-            
-            <div class="control-group" ng-class="{error: user.dob.$invalid && !user.dob.$pristine}">
-                <label class="control-label" for="dob">Date Of Birth</label>
-                <div class="controls">
-                    <input type="text" class="input-xlarge" datepicker-popup="yyyy-MM-dd" ng-model="user.dob" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="" date-disabled="disabled(date, mode)" ng-required="true" show-weeks="false" show-button-bar="false" />
+                    <input id="firstName" name="firstName" ng-model="user.firstName" type="text" placeholder="First Name" class="input-xlarge" required=""  ng-class="{error: user.firstName.$invalid && !user.firstName.$pristine}"/>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="gender">Gender</label>
+                <label class="control-label" for="lastName">Last Name</label>
                 <div class="controls">
-                    <label class="radio inline" for="male">
-                        <input type="radio" name="gender" ng-model="user.gender" id="male" value="male" checked="checked">
-                        Male
-                    </label>
-                    <label class="radio inline" for="female">
-                        <input type="radio" name="gender" ng-model="user.gender" id="female" value="female">
-                        Female
-                    </label>
+                    <input id="lastName" name="lastName" ng-model="user.lastName" type="text" placeholder="Last Name" class="input-xlarge" required=""  ng-class="{error: user.lastName.$invalid && !user.lastName.$pristine}"/>
                 </div>
             </div>
-            
+
             <div class="control-group">
-                <label class="control-label" for="country">Country</label>
+                <label class="control-label" for="userName">User ID</label>
                 <div class="controls">
-                    <select class="input-xlarge" id="country" ng-model="user.country" ng-click="select_change($event)" ng-options="c.id as c.name for c in country_array">
-                    </select>
+                    <input id="userName" name="userName" ng-model="user.userName" type="text" placeholder="User ID" class="input-xlarge" required=""  ng-class="{error: user.userName.$invalid && !user.userName.$pristine}"/>
                 </div>
             </div>
-            
+
             <div class="control-group">
-                <label class="control-label" for="state">State</label>
+                <label class="control-label" for="whereAbouts">First Name</label>
                 <div class="controls">
-                    <select class="input-xlarge" id="state" ng-model="user.state" ng-options="s.id as s.name for s in filteredArray | filter:{country_id: user.country}">
-                    </select>
+                    <input id="whereAbouts" name="whereAbouts" ng-model="user.whereAbouts" type="text" placeholder="Location" class="input-xlarge" required=""  ng-class="{error: user.whereAbouts.$invalid && !user.whereAbouts.$pristine}"/>
                 </div>
-            </div>
-            
-            <div class="control-group">
-                <label class="control-label" for="designation">Designation</label>
-                <div class="controls">
-                    <select id="designation" ng-model="user.designation" name="designation" class="input-xlarge" ng-options="opt.name as opt.name for opt in designations"></select>
-                </div>
-            </div>
-            
-            <div class="control-group">
-                <label class="control-label" for="tnc">Term &amp; Condition</label>
-                <div class="controls">
-                    <label class="checkbox inline" for="tnc">
-                        <input name="tnc" id="tnc" type="checkbox" ng-model="user.tnc" required />Accept
-                    </label>
-                </div>
-            </div>
+            </div>                            
             
         </form>
     </div>
     <div class="modal-footer">
         <button ng-click="save()" ng-if="user.id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
-        <button ng-click="add()" type="submit" ng-if="!user.id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+        <button ng-click="add()" type="submit" ng-if="!user.userName" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
         <button ng-click="cancel()" class="btn">Cancel</button>
     </div>
 </script>    
