@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Nougal</title>
+
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/portfolio-item.css" rel="stylesheet">
 </head>
 
 <body role="document">
 
- <nav class="navbar navbar-default">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,46 +29,59 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="#">Whereabouts</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li><a href="#">Nougal</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </nav>
 
-<div width="85%">
+  <div class="splash">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">            
+            <h1>Nougal</h1>                        
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Page Content -->
+    <div class="container">
+
+<div class="row">            
+  <div class="col-lg-12">
+    <h3 class="page-header">Whereabouts</h3>  
 
       <div id="screen" class="rTable">
          <div class="rTableRow">
-                <div class="rTableHead">#</div>
                 <div class="rTableHead">First Name</div>
                 <div class="rTableHead">Last Name</div>
-                <div class="rTableHead">Username</div>
-                <div class="rTableHead">Location</div>
+                <div class="rTableHead">User ID</div>
+                <div class="rTableHead">Whereabouts</div>
               </div>
               <div class="rTableRow">
-                <div class="rTableCell">2</div>
                 <div class="rTableCell">Janice</div>
                 <div class="rTableCell">Thornton</div>
                 <div class="rTableCell">jthornton</div>
                 <div class="rTableCell">Birmingham</div>
               </div>
               <div class="rTableRow">
-                <div class="rTableCell">3</div>
                 <div class="rTableCell">Larry</div>
                 <div class="rTableCell">Smith</div>
                 <div class="rTableCell">lsmith</div>
                 <div class="rTableCell">London</div>
               </div>
               <div class="rTableRow">
-                <div class="rTableCell">4</div>
                 <div class="rTableCell">Barry</div>
                 <div class="rTableCell">Smart</div>
                 <div class="rTableCell">bsharp</div>
                 <div class="rTableCell">London</div>
               </div>              
-            
+            </div>
         </div>
       </div>
+    </div>
   </body>
 </html>
