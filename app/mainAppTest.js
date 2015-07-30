@@ -1,5 +1,5 @@
-describe('Test the Nougal controller', function() {
-	beforeEach(module('mainApp'));
+describe('Test the ToDo controller', function() {
+	beforeEach(module('app'));
 
 	beforeEach(inject(function($controller) {
 		ctrl = $controller('EventCtrl');
