@@ -1,0 +1,29 @@
+body {
+	margin: 1em;
+}
+
+ul {
+	list-style: none;
+	width: 25%;
+	padding-left: 0px;
+}
+
+li {
+	padding: 0.5em;
+	position: relative;
+	padding: 10px 15px;
+	border: 1px solid gray;
+}
+
+input:required {
+    box-shadow: none;
+}
+
+input.ng-invalid {
+	background-color: red;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: gray;
+}
