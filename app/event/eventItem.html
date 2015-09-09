@@ -1,3 +1,6 @@
+
+<p>There are {{event.people.length}} people in the list. </p>
+
 	<div id="screen" class="rTable">            
         <div class="rTableRow">
             <div class="rTableHead">First Name</div>
@@ -8,10 +11,10 @@
         </div>
 
         <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
-			<div class="rTableCell">{{person.firstName}}</div>
-            <div class="rTableCell">{{person.lastName}}</div>
-            <div class="rTableCell">{{person.userName}}</div>
-            <div class="rTableCell">{{person.whereAbouts}}</div>
+			<div class="rTableCell">{{person.FIRSTNAME}}</div>
+            <div class="rTableCell">{{person.SURNAME}}</div>
+            <div class="rTableCell">{{person.USERPROFILE}}</div>
+            <div class="rTableCell">{{person.WHEREABOUTS}}</div>
             <div class="rTableCell">
                 <a href="#" class="btn btn-success" ng-click="event.deletePerson()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a> 
                 <a href="#" class="btn btn-success" ng-click="event.modifyPerson()"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modify</a>

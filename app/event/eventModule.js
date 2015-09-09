@@ -16,7 +16,7 @@ angular.module('eventModule', [])
     if(!search){return items;}
     angular.forEach(items, function(item) {
 
-    	if(angular.lowercase(item.firstName).indexOf(angular.lowercase(search))!=-1)
+    	if(angular.lowercase(item.FIRSTNAME).indexOf(angular.lowercase(search))!=-1)
     	{
     		filtered.push(item);
     	}
@@ -32,9 +32,13 @@ angular.module('eventModule', [])
 .run([function () {
 	console.log("Event Module::running");
 }])
-.controller('EventCtrl', ['$scope', '$modal', 'MainTitle',function ($scope,$modal,mainTitle) {
+.controller('EventCtrl', ['$scope', '$modal', '$http', 'Events', 'MainTitle',function ($scope,$modal,$http,Events,mainTitle) {
 	this.title = mainTitle.title;
+
+	this.what = "what"
 	
+	//this.people = [{"INITIALS":"SFA  ","SURNAME":"ADAM                ","LASTTIME":0,"USERPROFILE":"SHAHEENA  ","EXTENSION":"LD","FIRSTNAME":"SHAHEEN                       ","EMAIL":"shaheen.adam@jhc.co.uk                                                ","FULLNAME":"Shaheen Adam        ","WHEREABOUTS":"Somewhere or other                                                                   "}]
+
 	this.menu=[
 		{
 			name:"Whereabouts",
@@ -68,28 +72,51 @@ angular.module('eventModule', [])
 		return(this.eventIndex);
 	}
 
-	this.people=[
+	this.getData = function(){
+		var scope = this;
+	$http.get('http://localhost:8081/api/nougals')
+      .success(function(data){
+        scope.people = data;
+      });
+	}
+/*
+	this.getData = function(){
+
+		console.log("called this.getData")
+
+		var scope = this;
+		Events.get(function(data){
+      		this.people = data;
+
+			console.log(this.people.length)      		
+      	});
+
+	}
+*/
+	this.getData();
+	//console.log(this.people.length)    
+
+	/*this.people=[
 	{
-		firstName : "Mark",
-		lastName : "Humphreys",
-		userName: "MARKH",
-		whereAbouts: "Birmingham"
+		FIRSTNAME : "Mark",
+		SURNAME : "Humphreys",
+		USERPROFILE: "MARKH",
+		WHEREABOUTS: "Birmingham"
 	},
 	{
-		firstName : "John",
-		lastName : "Cullen",
-		userName: "JOHNC",
-		whereAbouts: "Newcastle"
+		FIRSTNAME : "John",
+		SURNAME : "Cullen",
+		USERPROFILE: "JOHNC",
+		WHEREABOUTS: "Newcastle"
 	},
 	{
-		firstName : "Alex",
-		lastName : "Francis",
-		userName: "ALEXF",
-		whereAbouts: "London"
+		FIRSTNAME : "Alex",
+		SURNAME : "Francis",
+		USERPROFILE: "ALEXF",
+		WHEREABOUTS: "London"
 	},
 	]
-
-
+*/
 
 	this.addPerson = function(userId) {
     

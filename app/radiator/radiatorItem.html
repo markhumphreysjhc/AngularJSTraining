@@ -1,0 +1,9 @@
+
+    <div id="screen" class="rTable">            
+        <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
+			<div class="rTableCell">{{person.FIRSTNAME}}</div>
+            <div class="rTableCell">{{person.SURNAME}}</div>
+            <div class="rTableCell">{{person.USERPROFILE}}</div>
+            <div class="rTableCell">{{person.WHEREABOUTS}}</div>            
+        </div>		
+    </div>

@@ -2,7 +2,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">            
-            <h1>{{event.title}}</h1>                        
+            <h1>{{::event.title}}</h1>                        
           </div>
         </div>
       </div>
@@ -18,24 +18,19 @@
             </div>
         </div>
 -->
-        <div class="row">            
-            <div class="col-lg-12">
-                <h3 class="page-header">Whereabouts</h3>            
-                <section>
-                    <input type="text" class="search-query pull-left" ng-model="event.search" placeholder="Search">
-                    <a href="#" class="btn btn-primary pull-right" ng-click="event.addPerson()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</a>
-                </section>                        
-            </div>
-            <div class="col-lg-12">            
-                <event-item></event-item>                
-            </div>    
+        <div>           
+            <radiator-item></radiator-item>                
+        </div>
+
+        <div>           
+            <summary-item></summary-item>                
         </div>
 
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; JHC Wednesday Web 2015</p>
+                    <p>Copyright &copy; JHC 2015</p>
                 </div>
             </div>
             <!-- /.row -->

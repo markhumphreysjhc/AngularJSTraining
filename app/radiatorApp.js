@@ -1,7 +1,10 @@
 /*Angular Modules take a name, best practice is lowerCamelCase, and a list of dependancies*/
 /*added the second module as a dependancy */
-angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap'])
-.config(['$urlRouterProvider','$stateProvider',
+
+angular.module('Authentication', []);
+
+angular.module('radiatorApp', ['radiatorModule','ngRoute','ui.router','ui.bootstrap'])
+.config(['$urlRouterProvider','$stateProvider','$httpProvider',
   function($urlRouterProvider,$stateProvider) {
 
     $stateProvider
@@ -9,7 +12,7 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap'])
 
           // Use a url of "/" to set a states as the "index".
           url: "/home",
-          templateUrl: 'home.html'
+          templateUrl: 'radiator-home.html'
 
         })
         
@@ -22,7 +25,7 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap'])
         })
 
         $urlRouterProvider.when('', '/home');
-   
+  
   }])
 .run([function () {
 	/* Run is when the app gets kicked off*/
@@ -31,7 +34,8 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap'])
 .factory('Events', ['$http', function($http){
     return{
       get: function(callback){
-          $http.get('http://localhost:8081/api/nougals').success(function(data) {
+
+          $http.get('http://jenkins.jhcllp.local/view/transaction-testing-radiator-view/api/xml').success(function(data) {
             callback(data);
         });
       }
