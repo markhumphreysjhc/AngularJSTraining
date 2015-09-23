@@ -16,7 +16,9 @@ angular.module('eventModule', [])
     if(!search){return items;}
     angular.forEach(items, function(item) {
 
-    	if(angular.lowercase(item.FIRSTNAME).indexOf(angular.lowercase(search))!=-1)
+    	value = item.FIRSTNAME.trim() + ' ' + item.SURNAME.trim() +"!"+ item.WHEREABOUTS.trim() 
+
+    	if(angular.lowercase(value).indexOf(angular.lowercase(search))!=-1)
     	{
     		filtered.push(item);
     	}
@@ -72,7 +74,7 @@ angular.module('eventModule', [])
 
 	this.getData = function(){
 		var scope = this;
-		$http.get('http://localhost:8081/api/nougals')
+		$http.get('http://172.19.20.151:8081/api/nougals')
       		.success(function(data){
         scope.people = data;
       });
@@ -110,11 +112,11 @@ angular.module('eventModule', [])
         $modalInstance.close("save");
 
         // Now update the values
-        console.log('http://localhost:8081/api/nougals/' + $scope.person.INITIALS);
+        console.log('http://172.19.20.151:8081/api/nougals/' + $scope.person.INITIALS);
 
         console.log($scope.person)
 
-        $http.put('http://localhost:8081/api/nougals/' + $scope.person.INITIALS, { "initials":$scope.person.INITIALS, "whereabouts":$scope.person.WHEREABOUTS})
+        $http.put('http://172.19.20.151:8081/api/nougals/' + $scope.person.INITIALS, { "initials":$scope.person.INITIALS, "whereabouts":$scope.person.WHEREABOUTS})
 
         //aValue = angular.copy($scope.person)
     };
