@@ -37,8 +37,6 @@ angular.module('eventModule', [])
 
 	this.what = "what"
 	
-	//this.people = [{"INITIALS":"SFA  ","SURNAME":"ADAM                ","LASTTIME":0,"USERPROFILE":"SHAHEENA  ","EXTENSION":"LD","FIRSTNAME":"SHAHEEN                       ","EMAIL":"shaheen.adam@jhc.co.uk                                                ","FULLNAME":"Shaheen Adam        ","WHEREABOUTS":"Somewhere or other                                                                   "}]
-
 	this.menu=[
 		{
 			name:"Whereabouts",
@@ -74,97 +72,57 @@ angular.module('eventModule', [])
 
 	this.getData = function(){
 		var scope = this;
-	$http.get('http://localhost:8081/api/nougals')
-      .success(function(data){
+		$http.get('http://localhost:8081/api/nougals')
+      		.success(function(data){
         scope.people = data;
       });
 	}
-/*
-	this.getData = function(){
 
-		console.log("called this.getData")
-
-		var scope = this;
-		Events.get(function(data){
-      		this.people = data;
-
-			console.log(this.people.length)      		
-      	});
-
-	}
-*/
 	this.getData();
-	//console.log(this.people.length)    
 
-	/*this.people=[
-	{
-		FIRSTNAME : "Mark",
-		SURNAME : "Humphreys",
-		USERPROFILE: "MARKH",
-		WHEREABOUTS: "Birmingham"
-	},
-	{
-		FIRSTNAME : "John",
-		SURNAME : "Cullen",
-		USERPROFILE: "JOHNC",
-		WHEREABOUTS: "Newcastle"
-	},
-	{
-		FIRSTNAME : "Alex",
-		SURNAME : "Francis",
-		USERPROFILE: "ALEXF",
-		WHEREABOUTS: "London"
-	},
-	]
-*/
-
-	this.addPerson = function(userId) {
+	this.modifyPerson = function(person) {
     
-		console.log("clicked add");
-/*
-		var elem = {
-		firstName : "Christoph",
-		lastName : "Kieselmann",
-		userName: "CKIESELMAN",
-		whereAbouts: "Tamworth"
-		}
+		console.log("clicked modifyPerson");
 
-    	this.people.push(elem);
-*/
+		$scope.valueToPass = "I must be passed";
 
         var modalInstance = $modal.open({
-            templateUrl: 'add_user_modal',
-            controller: $scope.model,
+            templateUrl: 'app\\event\\update_modal.html',
+            controller: 'modalDialogCtrl',
             resolve: {
-                id: function() {
-                    return userId;
+                aValue: function() {
+                    return person;
                 }
             }
         });
-
-	    // close modal
-        $modalInstance.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
-
-        // Add new user
-        $modalInstance.add = function() {
-   //         Users.$add($scope.user)
-            $modalInstance.dismiss('cancel');
-        };
-
-        // Save edited user.
-        $modalInstance.save = function() {
-     //       $scope.user.$save();
-            $modalInstance.dismiss('cancel');
-        };
+        modalInstance.result.then(function (paramFromDialog) {
+   		  $scope.paramFromDialog = paramFromDialog;
+        });
   	}
-
-	
 }])
 .controller('EventItemCtrl', ['$scope','MainTitle',  function ($scope,mainTitle) {
 	
 }])
+.controller('modalDialogCtrl',function($scope, $modalInstance, $http, aValue) {
+    $scope.person = angular.copy(aValue);
+
+    $scope.save = function () {
+        $modalInstance.close("save");
+
+        // Now update the values
+        console.log('http://localhost:8081/api/nougals/' + $scope.person.INITIALS);
+
+        console.log($scope.person)
+
+        $http.put('http://localhost:8081/api/nougals/' + $scope.person.INITIALS, { "initials":$scope.person.INITIALS, "whereabouts":$scope.person.WHEREABOUTS})
+
+        //aValue = angular.copy($scope.person)
+    };
+    $scope.cancel = function () {
+        $modalInstance.close("cancel");
+    };
+
+})
 .controller('EventTabCtrl', ['$scope', function ($scope) {
 	this.tab = 0;
 	this.setTab=function(val)
