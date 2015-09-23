@@ -5,63 +5,18 @@
         <div class="rTableRow">
             <div class="rTableHead">First Name</div>
             <div class="rTableHead">Last Name</div>
-            <div class="rTableHead">User ID</div>
-            <div class="rTableHead">Whereabouts</div>
+            <div class="rTableHead">Initials</div>
+            <div class="rTableHead">Whereabouts</div>            
             <div class="rTableHead">Action</div>
         </div>
 
         <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
 			<div class="rTableCell">{{person.FIRSTNAME}}</div>
             <div class="rTableCell">{{person.SURNAME}}</div>
-            <div class="rTableCell">{{person.USERPROFILE}}</div>
+            <div class="rTableCell">{{person.INITIALS}}</div>            
             <div class="rTableCell">{{person.WHEREABOUTS}}</div>
-            <div class="rTableCell">
-                <a href="#" class="btn btn-success" ng-click="event.deletePerson()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a> 
-                <a href="#" class="btn btn-success" ng-click="event.modifyPerson()"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modify</a>
+            <div class="rTableCell">                
+                <a href="#" class="btn btn-success" ng-click="event.modifyPerson(person)"><span class="glyphicon glyphicon-edit"></span>&nbsp;Update</a>
             </div>
         </div>		
-    </div>
-
-<script type="text/ng-template" id="add_user_modal">
-    <div class="modal-header">
-        <h3>User Form</h3>
-    </div>
-    <div class="modal-body">
-        <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
-        <form name="userForm" class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label" for="firstName">First Name</label>
-                <div class="controls">
-                    <input id="firstName" name="firstName" ng-model="user.firstName" type="text" placeholder="First Name" class="input-xlarge" required=""  ng-class="{error: user.firstName.$invalid && !user.firstName.$pristine}"/>
-                </div>
-            </div>
-            
-            <div class="control-group">
-                <label class="control-label" for="lastName">Last Name</label>
-                <div class="controls">
-                    <input id="lastName" name="lastName" ng-model="user.lastName" type="text" placeholder="Last Name" class="input-xlarge" required=""  ng-class="{error: user.lastName.$invalid && !user.lastName.$pristine}"/>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="userName">User ID</label>
-                <div class="controls">
-                    <input id="userName" name="userName" ng-model="user.userName" type="text" placeholder="User ID" class="input-xlarge" required=""  ng-class="{error: user.userName.$invalid && !user.userName.$pristine}"/>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="whereAbouts">First Name</label>
-                <div class="controls">
-                    <input id="whereAbouts" name="whereAbouts" ng-model="user.whereAbouts" type="text" placeholder="Location" class="input-xlarge" required=""  ng-class="{error: user.whereAbouts.$invalid && !user.whereAbouts.$pristine}"/>
-                </div>
-            </div>                            
-            
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button ng-click="save()" ng-if="user.id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
-        <button ng-click="add()" type="submit" ng-if="!user.userName" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
-        <button ng-click="cancel()" class="btn">Cancel</button>
-    </div>
-</script>    
+    </div>  
