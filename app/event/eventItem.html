@@ -3,14 +3,14 @@
 
 	<div id="screen" class="rTable">            
         <div class="rTableRow">
-            <div class="rTableHead">Name</div>
+            <div class="rTableHead">Name</div>            
             <div class="rTableHead">Initials</div>
             <div class="rTableHead">Whereabouts</div>            
             <div class="rTableHead">Action</div>
         </div>
 
         <div class="rTableRow" ng-repeat="person in event.people | searchPerson:event.search">
-			<div class="rTableCell">{{person.FIRSTNAME}} {{person.SURNAME}}</div>
+            <div class="rTableCell"><div><img src="https://jira.jhc.co.uk/secure/useravatar?ownerId={{person.JIRA_USER}}"/> {{person.FIRSTNAME}} {{person.SURNAME}}</div></div>
             <div class="rTableCell">{{person.INITIALS}}</div>            
             <div class="rTableCell">{{person.WHEREABOUTS}}</div>
             <div class="rTableCell">                

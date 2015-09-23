@@ -86,8 +86,6 @@ angular.module('eventModule', [])
     
 		console.log("clicked modifyPerson");
 
-		$scope.valueToPass = "I must be passed";
-
         var modalInstance = $modal.open({
             templateUrl: 'app\\event\\update_modal.html',
             controller: 'modalDialogCtrl',
@@ -97,17 +95,14 @@ angular.module('eventModule', [])
                 }
             }
         });
-        modalInstance.result.then(function (paramFromDialog) {
-   		  $scope.paramFromDialog = paramFromDialog;
-        });
   	}
 }])
 .controller('EventItemCtrl', ['$scope','MainTitle',  function ($scope,mainTitle) {
 	
 }])
 .controller('modalDialogCtrl',function($scope, $modalInstance, $http, aValue) {
-    $scope.person = angular.copy(aValue);
-
+    //$scope.person = angular.copy(aValue);
+$scope.person = angular.copy(aValue);
     $scope.save = function () {
         $modalInstance.close("save");
 
