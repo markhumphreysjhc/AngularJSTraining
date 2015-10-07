@@ -1,6 +1,6 @@
 /*Angular Modules take a name, best practice is lowerCamelCase, and a list of dependancies*/
 /*added the second module as a dependancy */
-angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap', 'ui.bootstrap.modal'])
+angular.module('mainApp', ['eventModule','ngResource','ngRoute','ui.router','ui.bootstrap', 'ui.bootstrap.modal'])
 .config(['$urlRouterProvider','$stateProvider',
   function($urlRouterProvider,$stateProvider) {
 
@@ -27,13 +27,4 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router','ui.bootstrap', '
 .run([function () {
 	/* Run is when the app gets kicked off*/
 	console.log("Run hook");
-}])
-.factory('Events', ['$http', function($http){
-    return{
-      get: function(callback){
-          $http.get('http://localhost:8081/api/nougals').success(function(data) {
-            callback(data);
-        });
-      }
-    };
-    }]);
+}]);

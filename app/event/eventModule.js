@@ -1,7 +1,4 @@
-
-
 (function(){
-
 angular.module('eventModule', [])
 .factory('MainTitle', [function () {
 	
@@ -27,31 +24,37 @@ angular.module('eventModule', [])
    return filtered;
   };
 })
-
+.factory('Events', function($resource) {
+  return $resource('http://172.19.20.151:8081/api/nougals/:id', {}, {
+    query: { method: 'GET', isArray: true },
+    show: { method: 'GET'},
+    update: { method: 'PUT'}
+  })
+})
 .config([function () {
 	console.log("Event Module:: config");
 }])
 .run([function () {
 	console.log("Event Module::running");
 }])
-.controller('EventCtrl', ['$scope', '$modal', '$http', 'Events', 'MainTitle',function ($scope,$modal,$http,Events,mainTitle) {
-	this.title = mainTitle.title;
+.controller('EventCtrl', ['$scope', '$modal', '$http', 'Events', 'MainTitle', 
+	function ($scope,$modal,$http,Events,mainTitle) {
 
-	this.what = "what"
-	
-	this.menu=[
-		{
-			name:"Whereabouts",
-			href:"index.html"
-		},
-		{
-			name:"Contact",
-			href:"contact.html"
-		}
-	]	
+		this.title = mainTitle.title;
 
-	this.index = 0;
-	this.eventIndex = 0;
+		this.menu=[
+			{
+				name:"Whereabouts",
+				href:"index.html"
+			},
+			{
+				name:"Contact",
+				href:"contact.html"
+			}
+		]	
+
+		this.index = 0;
+		this.eventIndex = 0;
 
 	this.setIndex=function(val)
 	{
@@ -74,10 +77,10 @@ angular.module('eventModule', [])
 
 	this.getData = function(){
 		var scope = this;
-		$http.get('http://172.19.20.151:8081/api/nougals')
-      		.success(function(data){
-        scope.people = data;
-      });
+        
+        scope.people = Events.query(function() {
+            console.log(scope.people);
+        }); 
 	}
 
 	this.getData();
@@ -100,20 +103,13 @@ angular.module('eventModule', [])
 .controller('EventItemCtrl', ['$scope','MainTitle',  function ($scope,mainTitle) {
 	
 }])
-.controller('modalDialogCtrl',function($scope, $modalInstance, $http, aValue) {
-    //$scope.person = angular.copy(aValue);
-$scope.person = angular.copy(aValue);
+.controller('modalDialogCtrl',function($scope, $modalInstance, $http, aValue, Events) {
+    
+    $scope.person = angular.copy(aValue);
+    
     $scope.save = function () {
         $modalInstance.close("save");
-
-        // Now update the values
-        console.log('http://172.19.20.151:8081/api/nougals/' + $scope.person.INITIALS);
-
-        console.log($scope.person)
-
-        $http.put('http://172.19.20.151:8081/api/nougals/' + $scope.person.INITIALS, { "initials":$scope.person.INITIALS, "whereabouts":$scope.person.WHEREABOUTS})
-
-        //aValue = angular.copy($scope.person)
+        Events.update({ id: $scope.person.INITIALS }, { "initials":$scope.person.INITIALS, "whereabouts":$scope.person.WHEREABOUTS})
     };
     $scope.cancel = function () {
         $modalInstance.close("cancel");

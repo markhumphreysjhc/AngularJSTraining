@@ -6572,7 +6572,7 @@ button.close {
           clear: both;
       }
       .rTableHead, .rTableFoot{
-          background-color: #DDD;
+          background-color: rgba(255,255,136,0.5);
           font-weight: bold;
       }
       .rTableCell, .rTableHead {
@@ -6584,7 +6584,7 @@ button.close {
           width: 20%;
       }
       .rTableRow:nth-of-type(odd) {
-          background-color: #DDD;
+          background-color: rgba(255,255,136,0.5);
       }
       .rTable:after {
            visibility: hidden;
